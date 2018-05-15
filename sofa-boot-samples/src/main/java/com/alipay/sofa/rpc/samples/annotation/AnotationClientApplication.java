@@ -19,7 +19,6 @@ package com.alipay.sofa.rpc.samples.annotation;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ImportResource;
 
 /**
  * @author <a href="mailto:leizhiyuan@gmail.com">leizhiyuan</a>
@@ -36,15 +35,15 @@ public class AnotationClientApplication {
 
         ApplicationContext applicationContext = springApplication.run(args);
 
-        AnnotationService annotationService = (AnnotationService) applicationContext.getBean("directServiceReference");
+        AnnotationClientImpl annotationService = applicationContext.getBean(AnnotationClientImpl.class);
 
-        String result = annotationService.sayAnnotation("direct");
+        String result = annotationService.sayClientAnnotation("annotation");
         System.out.println("invoke result:" + result);
 
-        if ("direct".equalsIgnoreCase(result)) {
-            System.out.println("direct invoke success");
+        if ("annotation".equalsIgnoreCase(result)) {
+            System.out.println("annotation invoke success");
         } else {
-            System.out.println("direct invoke fail");
+            System.out.println("annotation invoke fail");
         }
     }
 }
