@@ -49,4 +49,9 @@ public class SofaBootRpcPropertiesTest {
     public void testUnderscoreConfig() {
         Assert.assertEquals("600", sofaBootRpcProperties.getBoltThreadPoolMaxSize());
     }
+    
+    @Test
+    public void testContextPath() {
+    	Assert.assertEquals("jsmfBank", sofaBootRpcProperties.getContextPath());
+    }
 }

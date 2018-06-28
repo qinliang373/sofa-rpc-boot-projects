@@ -107,4 +107,12 @@ public class ServerConfigContainerTest {
         Assert.assertTrue(serverConfig.isTelnet());
         Assert.assertTrue(serverConfig.isDaemon());
     }
+    
+    @Test
+    public void testRestServerContextPathConfiguration() {
+        sofaBootRpcProperties.setContextPath("jsmfBank");
+        ServerConfig serverConfig = serverConfigContainer
+            .createRestServerConfig();
+        Assert.assertEquals("jsmfBank/", serverConfig.getContextPath());
+    }
 }

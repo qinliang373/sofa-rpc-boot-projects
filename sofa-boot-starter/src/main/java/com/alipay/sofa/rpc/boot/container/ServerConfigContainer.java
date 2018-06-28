@@ -219,6 +219,7 @@ public class ServerConfigContainer {
         String maxRequestSizeStr = sofaBootRpcProperties.getRestMaxRequestSize();
         String telnetStr = sofaBootRpcProperties.getRestTelnet();
         String daemonStr = sofaBootRpcProperties.getRestDaemon();
+        String contextPath = sofaBootRpcProperties.getContextPath();
 
         int port;
         int ioThreadCount;
@@ -275,6 +276,9 @@ public class ServerConfigContainer {
             .setTelnet(telnet)
             .setDaemon(daemon);
 
+        if(!StringUtils.isEmpty(contextPath)) {
+        	serverConfig.setContextPath(contextPath);
+        }
         serverConfig.setAutoStart(false);
         serverConfig.setProtocol(SofaBootRpcConfigConstants.RPC_PROTOCOL_REST);
         addCommonServerConfig(serverConfig);

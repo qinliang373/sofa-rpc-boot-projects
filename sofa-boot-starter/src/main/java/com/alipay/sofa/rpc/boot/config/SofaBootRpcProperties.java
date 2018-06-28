@@ -89,7 +89,10 @@ public class SofaBootRpcProperties {
 
     // bound server
     private String      boundHost;
+    
 
+    private String      contextPath;
+    
     public SofaBootRpcProperties(Environment environment) {
         this.environment = environment;
     }
@@ -400,7 +403,16 @@ public class SofaBootRpcProperties {
         this.bindNetworkInterface = bindNetworkInterface;
     }
 
-    private String getDotString(String enclosingMethodName) {
+    public String getContextPath() {
+		return StringUtils.isEmpty(contextPath) ? getDotString(new Object() {
+		}.getClass().getEnclosingClass().getName()) : contextPath;
+	}
+
+	public void setContextPath(String contextPath) {
+		this.contextPath = contextPath;
+	}
+
+	private String getDotString(String enclosingMethodName) {
         if (environment == null) {
             return null;
         }
